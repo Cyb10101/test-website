@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block body %}
+    <h1 class="text-effect-3d">Test Website</h1>
+    <div class="container box-blue">
+        <div class="row">
+            <div class="col-12">
+                <h5>Short info</h5>
+                {% include 'utility/tableKeyValue.html.twig' with {'table': shortInfo} %}
+                <br>
+
+                <h5>PHP INI Changes</h5>
+                {% include 'utility/tableKeyValue.html.twig' with {'table': phpIniChanges, 'header': phpIniChangesHeader} %}
+                <br>
+
+                <h5>PHP 5 INI Changes</h5>
+                {% include 'utility/tableKeyValue.html.twig' with {'table': php5iniChanges} %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

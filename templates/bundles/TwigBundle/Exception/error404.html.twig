@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404 File not found{% endblock %}
+
+{% block body %}
+    <div class="container box-blue">
+        <div class="row">
+            <div class="col-12">
+                <h5>File not found</h5>
+
+                <p>
+                    Nobody seen this page. Try another: <a href="{{ path('root') }}" class="btn btn-outline-dark btn-sm">To the startpage</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

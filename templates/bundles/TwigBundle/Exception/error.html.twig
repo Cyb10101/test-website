@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}500 Unknown error{% endblock %}
+
+{% block body %}
+    <div class="container box-blue">
+        <div class="row">
+            <div class="col-12">
+                <h5>Unknown error</h5>
+
+                <p>
+                    Oh, that's sad: <a href="{{ path('root') }}" class="btn btn-outline-dark btn-sm">To the startpage</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

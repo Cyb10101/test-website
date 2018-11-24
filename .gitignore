@@ -1,0 +1,12 @@
+/node_modules
+/public/.well-known
+/yarn-error.log
+.env
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

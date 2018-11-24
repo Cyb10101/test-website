@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block body %}
+    <div class="container box-blue">
+        <div class="row">
+            <div class="col-12">
+                <h5>Upload file</h5>
+
+                <form action="{{ path('upload') }}" method="post" enctype="multipart/form-data">
+                    <label for="file">File</label>
+                    <input type="file" name="file" id="file" required="required">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if file is not null %}
+        <div class="container box-blue">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Uploaded file</h5>
+
+                    {{ dump(file) }}
+
+                    {% if image != '' %}
+                        {{ image|raw }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

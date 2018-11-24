@@ -1,0 +1,22 @@
+<table style="width: 100%;">
+    {% if header is defined %}
+        <tr>
+            {% for item in header %}
+                <th>{{ item }}</th>
+            {% endfor %}
+        </tr>
+    {% endif %}
+    {% if table is defined %}
+        {% for row in table %}
+            <tr>
+                {% for item in row %}
+                    {% if loop.first %}
+                        <th>{{ item }}</th>
+                    {% else %}
+                        <td>{{ item }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+    <link rel="stylesheet" href="/build/app.css" media="all">
+    <script src="/build/app.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('root') }}">
+                <img src="/images/logo.jpg" height="30" class="d-inline-block align-top" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item{% if app.request.get('_route') == 'root' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('root') }}"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item{% if app.request.get('_route') == 'phpInfo' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('phpInfo') }}"><i class="fab fa-php"></i> PHP Info</a>
+                    </li>
+                    <li class="nav-item{% if app.request.get('_route') == 'database' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('database') }}"><i class="fas fa-database"></i> Database</a>
+                    </li>
+                    <li class="nav-item{% if app.request.get('_route') == 'upload' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('upload') }}"><i class="fas fa-upload"></i> Upload</a>
+                    </li>
+                    <li class="nav-item{% if app.request.get('_route') == 'mail' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('mail') }}"><i class="fas fa-envelope"></i> Mail</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container page">
+        <div class="row">
+            <div id="content" class="col-md-12">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white">
+        Created by <a href="https://cyb10101.de/" target="_blank">Cyb10101</a>
+    </footer>
+</body></html>

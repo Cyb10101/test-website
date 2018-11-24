@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block body %}
+    {% include 'flashes.html.twig' %}
+
+    <div class="container box-blue">
+        <div class="row">
+            <div class="col-12">
+                <h5>E-Mail test</h5>
+                <p>
+                    <a href="http://127.0.0.1:8025/" target="_blank" class="btn2 btn-green-3d">MailHog</a>
+                    <a href="{{ path('mail_php') }}" class="btn2 btn-orange">Send PHP Mail</a>
+                    <a href="{{ path('mail_smtp') }}" class="btn2 btn-orange">Send SMTP Mail</a>
+                </p>
+
+                SendMail Path: {{ sendmailPath }}<br/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
