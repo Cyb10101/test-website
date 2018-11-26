@@ -181,6 +181,9 @@ class WebsiteController extends Controller {
             ['Server', $_SERVER['SERVER_SOFTWARE']],
             ['PHP', phpversion()],
             ['Current Work Directory', getcwd()],
+            ['WWW_CONTEXT', getenv('WWW_CONTEXT')],
+            ['TYPO3_CONTEXT', getenv('TYPO3_CONTEXT')],
+            ['FLOW_CONTEXT', getenv('FLOW_CONTEXT')],
         ];
 
         $phpIniChangesHeader = ['Key', 'Current value', 'Should be'];
