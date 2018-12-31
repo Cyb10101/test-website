@@ -206,11 +206,17 @@ class WebsiteController extends Controller {
             ['mysql.default_host', ini_get('mysql.default_host'), '127.0.0.1'],
         ];
 
+        $phpMethods = [
+            ['GraphicMagick', class_exists('\Gmagick') ? 'found' : 'missing'],
+            ['ImageMagick', class_exists('\Imagick') ? 'found' : 'missing'],
+        ];
+
         return $this->render('website/root.html.twig', [
             'shortInfo' => $shortInfo,
             'phpIniChangesHeader' => $phpIniChangesHeader,
             'phpIniChanges' => $phpIniChanges,
             'php5iniChanges' => $php5iniChanges,
+            'phpMethods' => $phpMethods,
         ]);
     }
 }
