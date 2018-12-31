@@ -209,6 +209,7 @@ class WebsiteController extends Controller {
         $phpMethods = [
             ['GraphicMagick', class_exists('\Gmagick') ? 'found' : 'missing'],
             ['ImageMagick', class_exists('\Imagick') ? 'found' : 'missing'],
+            ['xDebug', extension_loaded('xdebug') ? 'found' : 'missing'],
         ];
 
         return $this->render('website/root.html.twig', [
