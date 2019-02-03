@@ -33,7 +33,6 @@ class WebsiteController extends Controller {
                 echo '<style>' . $style . '</style>';
             }
 
-
             $buffer = preg_replace('/([a-zA-Z0-9]+),([a-zA-Z0-9]+)/s', '$1, $2', $buffer);
 
             $buffer = str_replace('%25', '%', $buffer);
@@ -64,27 +63,16 @@ class WebsiteController extends Controller {
      * @Route("/database/", name="database_slash")
      */
     public function database() {
-        $database = [
+        $config = [
             'host' => '127.0.0.1',
-            'username' => 'root',
-            'password' => 'root',
+            'user' => 'root',
+            'pass' => 'root',
         ];
 
-        if (!empty(getenv('DATABASE_URL'))) {
-            $databaseUrl = parse_url(getenv('DATABASE_URL'));
-            if (!empty($databaseUrl['host'])) {
-                $database['host'] = $databaseUrl['host'];
-            }
-            if (!empty($databaseUrl['host'])) {
-                $database['username'] = $databaseUrl['user'];
-            }
-            if (!empty($databaseUrl['host'])) {
-                $database['password'] = $databaseUrl['pass'];
-            }
-        }
+        $config = GeneralUtility::mergeArrayWithEnvironmentUrl($config, 'DATABASE_URL');
 
         return $this->render('website/database.html.twig', [
-            'message' => GeneralUtility::testDatabaseConnection($database['host'], $database['username'], $database['password']),
+            'message' => GeneralUtility::testDatabaseConnection($config['host'], $config['user'], $config['pass']),
         ]);
     }
 
@@ -136,7 +124,7 @@ class WebsiteController extends Controller {
         $mailMessage = (new \Swift_Message($subject))
             ->setFrom(['webmaster@example.org'])
             ->setTo(['test@example.org'])
-            ->setBody('This is a <b>development</b> on <b>PHP ' . phpversion() . '</b> test.');
+            ->setBody('This is a <b>development</b> on <b>PHP ' . phpversion() . '</b> test.', 'text/html');
 
         $result = $mailer->send($mailMessage);
         if ($result) {
@@ -153,19 +141,6 @@ class WebsiteController extends Controller {
      */
     public function mail(Request $request) {
         $task = $request->request->get('task', '');
-        if ($task === 'mail') {
-            $host = $request->request->get('host', '');
-            $port = $request->request->getInt('port', 1025);
-            $username = $request->request->get('username', '');
-            $password = $request->request->get('password', '');
-
-        } else if ($task === 'smtp') {
-            $host = $request->request->get('host', '');
-            $port = $request->request->getInt('port', 1025);
-            $username = $request->request->get('username', '');
-            $password = $request->request->get('password', '');
-
-        }
 
         return $this->render('website/mail.html.twig', [
             'sendmailPath' => ini_get('sendmail_path'),

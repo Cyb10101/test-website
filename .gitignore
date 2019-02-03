@@ -1,7 +1,8 @@
 /node_modules
 /public/.well-known
 /yarn-error.log
-.env
+/.idea
+/.env
 
 ###> symfony/framework-bundle ###
 /.env.local

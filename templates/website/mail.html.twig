@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Test{% endblock %}
+{% block title %}Mail test{% endblock %}
 
 {% block body %}
+    <h1 class="text-effect-3d">Mail test</h1>
     {% include 'flashes.html.twig' %}
 
     <div class="container box-blue">
@@ -10,7 +11,6 @@
             <div class="col-12">
                 <h5>E-Mail test</h5>
                 <p>
-                    <a href="http://127.0.0.1:8025/" target="_blank" class="btn2 btn-green-3d">MailHog</a>
                     <a href="{{ path('mail_php') }}" class="btn2 btn-orange">Send PHP Mail</a>
                     <a href="{{ path('mail_smtp') }}" class="btn2 btn-orange">Send SMTP Mail</a>
                 </p>
