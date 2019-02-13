@@ -1,4 +1,6 @@
 /node_modules
+/public/upload/*
+!/public/upload/.gitkeep
 /public/.well-known
 /yarn-error.log
 /.idea

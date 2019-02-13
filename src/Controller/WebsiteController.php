@@ -80,12 +80,20 @@ class WebsiteController extends Controller {
      * @Route("/upload", name="upload")
      * @Route("/upload/", name="upload_slash")
      */
-    public function upload() {
-        $file = isset($_FILES['file']) ? $_FILES['file'] : null;
+    public function upload(Request $request) {
         $image = '';
 
-        if (isset($_FILES['file']) && in_array($_FILES['file']['type'], ['image/jpeg', 'image/png', 'image/gif'])) {
+        /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file !== null && in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/gif'])) {
             $image = GeneralUtility::generateImageTag($_FILES['file']['tmp_name'], $_FILES['file']['type']);
+        }
+
+        if ($file !== null) {
+            /** @var \App\Kernel $kernel */
+            $kernel = $this->get('kernel');
+            $file->move($kernel->getProjectDir() . '/public/upload', $file->getClientOriginalName());
         }
 
         return $this->render('website/upload.html.twig', [
