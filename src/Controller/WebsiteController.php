@@ -87,7 +87,7 @@ class WebsiteController extends Controller {
         $file = $request->files->get('file');
 
         if ($file !== null && in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/gif'])) {
-            $image = GeneralUtility::generateImageTag($_FILES['file']['tmp_name'], $_FILES['file']['type']);
+            $image = GeneralUtility::generateImageTag($file->getPathname(), $file->getMimeType());
         }
 
         if ($file !== null) {
