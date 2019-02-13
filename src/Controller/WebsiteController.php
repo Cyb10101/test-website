@@ -93,7 +93,7 @@ class WebsiteController extends Controller {
         if ($file !== null) {
             /** @var \App\Kernel $kernel */
             $kernel = $this->get('kernel');
-            $file->move($kernel->getProjectDir() . '/public/upload', $file->getClientOriginalName());
+            $file->move($kernel->getProjectDir() . '/public/tmp', $file->getClientOriginalName());
         }
 
         return $this->render('website/upload.html.twig', [
