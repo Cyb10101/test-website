@@ -62,4 +62,13 @@ class GeneralUtility {
 
         return $array;
     }
+
+    /**
+     * @return bool
+     */
+    public static function isSsl() {
+        $isHttps = isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] == '1');
+        $isSslPort = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443';
+        return ($isHttps || $isSslPort);
+    }
 }

@@ -164,6 +164,7 @@ class WebsiteController extends Controller {
             ['Server', $_SERVER['SERVER_SOFTWARE']],
             ['PHP', phpversion()],
             ['Current Work Directory', getcwd()],
+            ['SSL', GeneralUtility::isSsl() ? 'On' : 'Off'],
             ['WWW_CONTEXT', getenv('WWW_CONTEXT')],
             ['TYPO3_CONTEXT', getenv('TYPO3_CONTEXT')],
             ['FLOW_CONTEXT', getenv('FLOW_CONTEXT')],
