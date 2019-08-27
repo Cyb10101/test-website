@@ -3,7 +3,7 @@
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.3.0",
-        "@symfony/webpack-encore": "^0.20.1",
+        "@symfony/webpack-encore": "^0.28.0",
         "bootstrap": "^4.1.1",
         "jquery": "^3.3.1",
         "node-sass": "^4.9.0",
