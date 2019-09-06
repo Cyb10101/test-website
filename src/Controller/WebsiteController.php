@@ -1,12 +1,15 @@
 <?php
 namespace App\Controller;
 
+use App\Traits\ControllerTrait;
 use App\Utility\GeneralUtility;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WebsiteController extends Controller {
+    use ControllerTrait;
+
     /**
      * @Route("/phpInfo", name="phpInfo")
      * @Route("/phpInfo/", name="phpInfo_slash")
@@ -165,6 +168,8 @@ class WebsiteController extends Controller {
             ['PHP', phpversion()],
             ['Current Work Directory', getcwd()],
             ['SSL', GeneralUtility::isSsl() ? 'On' : 'Off'],
+            ['Server: HTTPS', isset($_SERVER['HTTPS']) ? 'On' : 'Off'],
+            ['Server: HTTP_X_FORWARDED_SSL', isset($_SERVER['HTTP_X_FORWARDED_SSL']) ? 'On' : 'Off'],
             ['WWW_CONTEXT', getenv('WWW_CONTEXT')],
             ['TYPO3_CONTEXT', getenv('TYPO3_CONTEXT')],
             ['FLOW_CONTEXT', getenv('FLOW_CONTEXT')],

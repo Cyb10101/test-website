@@ -68,7 +68,8 @@ class GeneralUtility {
      */
     public static function isSsl() {
         $isHttps = isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] == '1');
+        $isHttpsForwarded = isset($_SERVER['HTTP_X_FORWARDED_SSL']) && (strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) == 'on' || $_SERVER['HTTP_X_FORWARDED_SSL'] == '1');
         $isSslPort = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443';
-        return ($isHttps || $isSslPort);
+        return ($isHttps || $isHttpsForwarded || $isSslPort);
     }
 }
