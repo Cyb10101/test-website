@@ -1,37 +1,61 @@
-var Encore = require('@symfony/webpack-encore');
-var webpack = require('webpack');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-Encore
-    .setOutputPath('public/build/')
+module.exports = (env, argv) => {
+    const devMode = argv.mode === 'development';
 
-    // the public path used by the web server to access the previous directory
-    .setPublicPath('/build')
-    .setManifestKeyPrefix('build')
+    return {
+        // JavaScript
+        entry: {
+            'app': './assets/js/app.js',
+        },
+        output: {
+            filename: '[name].js',
+            path: path.resolve(__dirname, 'public/build'),
+        },
 
-    // will create public/build/app.js and public/build/app.css
-    .addEntry('app', './assets/js/app.js')
-    // .addStyleEntry('app', './assets/css/app.scss')
-
-    .enableSassLoader()
-    .autoProvidejQuery()
-
-    // .autoProvideVariables({ Popper: ['popper.js', 'default'] })
-
-    .addPlugin(new webpack.DefinePlugin({
-        'process.isProduction': Encore.isProduction()
-    }))
-
-    .addPlugin(new webpack.ProvidePlugin({
-        // '$': 'jquery',
-        // 'jQuery': 'jquery',
-        Popper: ['popper.js', 'default']
-        // CKEDITOR: ['ckeditor', 'default']
-    }))
-
-    .enableSourceMaps(!Encore.isProduction())
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-;
-
-// export the final configuration
-module.exports = Encore.getWebpackConfig();
+        // Sass
+        module: {
+            rules: [{
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    // 'style-loader', // Creates `style` nodes from JS strings
+                    'css-loader', // Translates CSS into CommonJS
+                    'sass-loader' // Compiles Sass to CSS
+                ]
+            }, {
+                test: /\.(ttf|eot|woff|woff2|svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'fonts/[name].[ext]',
+                    },
+                },
+            }, {
+                test: /\.(gif|png|jpe?g|svg)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'images/[hash]-[name].[ext]'
+                    }
+                }]
+            }],
+        },
+        plugins: [
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+            }),
+            new FriendlyErrorsWebpackPlugin({
+                clearConsole: false
+            })
+        ],
+        performance: {
+            hints: false
+        },
+        stats: 'none',
+        devtool: 'source-map'
+    }
+};
