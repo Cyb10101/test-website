@@ -13,6 +13,7 @@ module.exports = (env, argv) => {
         output: {
             filename: '[name].js',
             path: path.resolve(__dirname, 'public/build'),
+            publicPath: '/build/'
         },
 
         // Sass
@@ -26,7 +27,7 @@ module.exports = (env, argv) => {
                     'sass-loader' // Compiles Sass to CSS
                 ]
             }, {
-                test: /\.(ttf|eot|woff|woff2|svg)$/,
+                test: /\.(ttf|eot|woff|woff2)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
