@@ -11,6 +11,9 @@ composer require --dev profiler
 ## Generate Webpack (CSS & JavaScript)
 
 ```Shell
-yarn run encore dev --watch
-yarn run encore production
+# Build production
+yarn build
+
+# Build development
+yarn build:dev
 ```
