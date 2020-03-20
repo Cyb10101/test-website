@@ -6,17 +6,17 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.2",
-        "symfony/console": "^4.1",
+        "symfony/console": "^5.0",
         "symfony/flex": "^1.1",
-        "symfony/framework-bundle": "^4.1",
+        "symfony/framework-bundle": "^5.0",
         "symfony/orm-pack": "^1.0",
         "symfony/swiftmailer-bundle": "^3.2",
-        "symfony/twig-bundle": "^4.1",
-        "symfony/yaml": "^4.1",
+        "symfony/twig-bundle": "^5.0",
+        "symfony/yaml": "^5.0",
         "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "symfony/dotenv": "^4.1",
+        "symfony/dotenv": "^5.0",
         "symfony/profiler-pack": "^1.0"
     },
     "config": {
@@ -61,7 +61,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "4.3.*"
+            "require": "5.0.*"
         }
     }
 }
