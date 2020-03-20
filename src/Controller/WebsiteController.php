@@ -3,11 +3,11 @@ namespace App\Controller;
 
 use App\Traits\ControllerTrait;
 use App\Utility\GeneralUtility;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class WebsiteController extends Controller {
+class WebsiteController extends AbstractController {
     use ControllerTrait;
 
     /**
