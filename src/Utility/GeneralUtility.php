@@ -44,8 +44,8 @@ class GeneralUtility {
      * @return array
      */
     public static function mergeArrayWithEnvironmentUrl($array, $environmentKey) {
-        if (!empty(getenv($environmentKey))) {
-            $parseUrl = parse_url(getenv($environmentKey));
+        if (!empty($_ENV[$environmentKey])) {
+            $parseUrl = parse_url($_ENV[$environmentKey]);
             if (!empty($parseUrl['host'])) {
                 $array['host'] = $parseUrl['host'];
             }
