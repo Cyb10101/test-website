@@ -94,9 +94,7 @@ class WebsiteController extends AbstractController {
         }
 
         if ($file !== null) {
-            /** @var \App\Kernel $kernel */
-            $kernel = $this->get('kernel');
-            $file->move($kernel->getProjectDir() . '/public/tmp', $file->getClientOriginalName());
+            $file->move($this->getProjectDirectory() . '/public/tmp', $file->getClientOriginalName());
         }
 
         return $this->render('website/upload.html.twig', [
