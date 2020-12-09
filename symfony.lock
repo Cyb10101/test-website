@@ -173,6 +173,9 @@
     "symfony/http-kernel": {
         "version": "v4.1.7"
     },
+    "symfony/mime": {
+        "version": "v5.1.9"
+    },
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
